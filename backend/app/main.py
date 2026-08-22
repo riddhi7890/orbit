@@ -9,16 +9,16 @@ from app.routes.recommendations import router as recommendations_router
 from app.routes.recovery import router as recovery_router
 from app.routes.collection import router as collection_router
 from app.routes.recovery_records import router as recovery_records_router
-
+from app.routes.treatment_plants import router as treatment_plants_router
 
 app = FastAPI(title="ORBIT API")
-
+from fastapi.middleware.cors import CORSMiddleware
 
 # CORS configuration
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=False,
+    allow_origins=["http://localhost:5173"],
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -33,7 +33,7 @@ app.include_router(recommendations_router)
 app.include_router(recovery_router)
 app.include_router(collection_router)
 app.include_router(recovery_records_router)
-
+app.include_router(treatment_plants_router)
 
 @app.get("/")
 def root():
