@@ -1,64 +1,68 @@
-# orbit
-ORBIT – Optimized Resource &amp; Bin Intelligence Technology
-Bilkul bhai. Since **ORBIT = Optimal Resource and Bin Intelligence System**, README ko hackathon-level professional rakhte hain — problem, AI classification, smart collection, recovery, architecture, APIs, setup, deployment sab clear rahe.
+# ORBIT
 
-Tumhare GitHub repo mein **root README.md** ke liye ye ready hai:
+## Optimal Resource and Bin Intelligence System
 
-# ♻️ ORBIT — Optimal Resource and Bin Intelligence System
+ORBIT is an AI-powered waste management and resource intelligence platform designed to improve waste segregation, collection efficiency, analytics, and resource recovery.
 
-> **AI-powered waste intelligence for smarter, cleaner, and more sustainable cities.**
-
-ORBIT is an AI-powered smart waste management platform that combines **computer vision, intelligent collection prioritization, waste analytics, resource recovery, and AI-assisted decision making** into a single system.
-
-Instead of treating waste management as simple collection, ORBIT turns waste data into actionable intelligence — helping cities understand **what waste is being generated, where collection is needed, and how recoverable resources can be utilized.**
+The system combines AI-based waste classification, collection prioritization, waste analytics, recovery analysis, and an AI assistant into a unified platform for intelligent waste management.
 
 ---
 
-## 🚀 Why ORBIT?
+## 1. Problem Statement
 
-Traditional waste management systems mainly focus on collecting waste after bins become full.
+Urban waste management faces several challenges:
 
-ORBIT focuses on **prediction, classification, prioritization, and recovery**.
+* Improper segregation of waste at the source.
+* Inefficient and reactive waste collection.
+* Difficulty in identifying recyclable and recoverable materials.
+* Limited visibility into waste generation and operational trends.
+* Lack of centralized intelligence for waste-management decisions.
 
-### The problem
+Traditional systems often depend on fixed collection schedules and manual classification, which can lead to unnecessary collection trips, overflowing bins, poor segregation, and loss of recoverable resources.
 
-* Waste is often incorrectly segregated.
-* Collection schedules are not always aligned with actual waste levels.
-* Valuable recyclable and recoverable materials are lost.
-* Waste-management teams lack a unified intelligence layer.
-* Large amounts of operational data are difficult to convert into actionable decisions.
+ORBIT addresses these challenges through an integrated AI and data-driven approach.
 
-### Our approach
+---
 
-ORBIT creates an intelligent pipeline:
+## 2. Solution
+
+ORBIT provides an end-to-end waste intelligence pipeline:
 
 ```text
-Waste Image
-    ↓
-AI Classification
-    ↓
+Waste Input
+     |
+     v
+AI Waste Classification
+     |
+     v
 Waste Category & Confidence
-    ↓
-Waste Analytics
-    ↓
-Collection Intelligence
-    ↓
-Priority Decision
-    ↓
-Resource Recovery
-    ↓
-AI Recommendations
+     |
+     +----------------------+
+     |                      |
+     v                      v
+Waste Analytics       Collection Intelligence
+                            |
+                            v
+                     Priority Decision
+                            |
+                            v
+                     Recovery Analysis
+                            |
+                            v
+                    AI Recommendations
 ```
+
+This allows waste-management operations to move from reactive collection toward data-driven decision making.
 
 ---
 
-# ✨ Core Features
+## 3. Key Features
 
-## 🤖 1. AI Waste Classification
+### 3.1 AI Waste Classification
 
-Users can upload a waste image and ORBIT analyzes it using AI.
+ORBIT uses AI-powered image classification to identify waste materials.
 
-The system classifies waste into categories such as:
+Supported categories include:
 
 * Organic
 * Paper
@@ -67,17 +71,17 @@ The system classifies waste into categories such as:
 * Metal
 * E-Waste
 
-The classification response includes:
+The classification system provides:
 
-* Detected object
+* Detected waste object
 * Waste category
-* Material
+* Material information
 * Confidence score
 * Recommended disposal action
 * Environmental impact
-* Circular recovery potential
+* Recovery potential
 
-### API
+**Endpoint**
 
 ```http
 POST /api/v1/waste/classify
@@ -85,21 +89,21 @@ POST /api/v1/waste/classify
 
 ---
 
-## 🗑️ 2. Smart Collection Intelligence
+### 3.2 Smart Collection Prioritization
 
-ORBIT uses bin and sensor data to determine collection urgency.
+ORBIT evaluates bin conditions and determines collection urgency.
 
-Instead of relying only on fixed schedules, the system evaluates:
+The system considers parameters such as:
 
 * Fill level
 * Bin status
 * Waste type
-* Estimated overflow time
-* Collection urgency
+* Estimated time to overflow
+* Collection priority
 
-This produces a dynamic collection priority.
+This allows collection operations to prioritize bins that require attention instead of relying exclusively on fixed schedules.
 
-### API
+**Endpoint**
 
 ```http
 POST /api/v1/collection/check
@@ -107,24 +111,24 @@ POST /api/v1/collection/check
 
 ---
 
-## 📊 3. Waste Analytics Dashboard
+### 3.3 Waste Analytics
 
-The dashboard provides an overview of the waste ecosystem.
+The analytics layer provides an overview of waste generation and segregation patterns.
 
-It tracks:
+It can display:
 
 * Total waste
 * Waste by category
-* Recyclable percentage
 * Organic waste
 * Plastic waste
 * Paper waste
 * E-waste
-* Collection status
+* Recyclable percentage
+* Collection statistics
 * Operational efficiency
-* Environmental impact
+* Environmental impact metrics
 
-### API
+**Endpoints**
 
 ```http
 GET /api/v1/dashboard
@@ -133,23 +137,18 @@ GET /api/v1/waste/stats
 
 ---
 
-## 🧠 4. AI Recommendations
+### 3.4 AI Recommendations
 
-ORBIT converts operational waste data into actionable recommendations.
+ORBIT generates operational recommendations from current waste-management conditions.
 
-For example:
+Recommendations can assist with:
 
-```text
-High fill level
-      ↓
-Collection priority increases
-      ↓
-AI recommendation generated
-      ↓
-Collection team can act
-```
+* Collection planning
+* Priority identification
+* Bin monitoring
+* Operational decision making
 
-### API
+**Endpoint**
 
 ```http
 GET /api/v1/recommendations
@@ -157,21 +156,21 @@ GET /api/v1/recommendations
 
 ---
 
-## ♻️ 5. Resource Recovery
+### 3.5 Resource Recovery
 
-Waste doesn't necessarily mean waste.
+ORBIT extends waste management beyond collection by identifying potential resource recovery opportunities.
 
-ORBIT identifies potential recovery opportunities from classified waste and maintains recovery records.
+The recovery module can analyze waste and maintain recovery records.
 
-The system can analyze:
+It provides information such as:
 
 * Recoverable material
 * Recovery potential
-* Recommended recovery process
+* Recommended recovery action
 * Environmental impact
-* Recovery records
+* Recovery history
 
-### APIs
+**Endpoints**
 
 ```http
 POST /api/v1/recovery/analyze
@@ -180,89 +179,95 @@ GET /api/v1/recovery/records
 
 ---
 
-## 🏭 6. Smart City Resource Map
+### 3.6 Smart City Resource Map
 
-Instead of only displaying smart bins, ORBIT provides a broader resource-oriented city view.
+The platform provides a map-based visualization layer for waste-management resources.
 
-The map can visualize relevant waste-treatment and resource-recovery facilities, helping connect waste generation with downstream processing.
+The map is designed to represent relevant waste-treatment and resource-recovery facilities and provide a geographic view of the waste-management ecosystem.
 
 ---
 
-# 🏗️ System Architecture
+### 3.7 AI Assistant
+
+ORBIT includes an AI assistant that acts as a natural-language interface for the platform.
+
+It is designed to help users understand waste-management information and interact with the system using conversational queries.
+
+---
+
+## 4. System Architecture
 
 ```text
-                    ┌─────────────────────┐
-                    │      ORBIT UI       │
-                    │   React + Vite      │
-                    └──────────┬──────────┘
-                               │
-                               │ REST APIs
-                               ▼
-                    ┌─────────────────────┐
-                    │    FastAPI Backend  │
-                    │     Python          │
-                    └──────────┬──────────┘
-                               │
-              ┌────────────────┼────────────────┐
-              │                │                │
-              ▼                ▼                ▼
-       ┌────────────┐   ┌──────────────┐  ┌──────────────┐
-       │ AI Waste   │   │ Collection   │  │  Recovery    │
-       │ Classifier │   │ Intelligence │  │   Engine     │
-       └────────────┘   └──────────────┘  └──────────────┘
-              │                │                │
-              └────────────────┼────────────────┘
-                               ▼
-                    ┌─────────────────────┐
-                    │      Supabase       │
-                    │ Database / Storage   │
-                    └─────────────────────┘
+                    +----------------------+
+                    |      ORBIT UI        |
+                    |   React + Vite       |
+                    +----------+-----------+
+                               |
+                               | REST API
+                               v
+                    +----------------------+
+                    |    FastAPI Backend   |
+                    |       Python         |
+                    +----------+-----------+
+                               |
+          +--------------------+--------------------+
+          |                    |                    |
+          v                    v                    v
+   +-------------+     +--------------+     +-------------+
+   | AI Waste    |     | Collection   |     | Resource    |
+   | Classifier  |     | Intelligence |     | Recovery    |
+   +-------------+     +--------------+     +-------------+
+          |                    |                    |
+          +--------------------+--------------------+
+                               |
+                               v
+                    +----------------------+
+                    |      Supabase        |
+                    |      PostgreSQL      |
+                    +----------------------+
 ```
 
 ---
 
-# 🛠️ Tech Stack
+## 5. Technology Stack
 
-## Frontend
+### Frontend
 
 * React
 * Vite
 * JavaScript
 * CSS
-* React Three Fiber / Three.js for 3D visualization
+* Three.js / React Three Fiber
 
-## Backend
+### Backend
 
 * Python
 * FastAPI
 * Uvicorn
 * REST APIs
 
-## AI
+### Artificial Intelligence
 
 * Google Gemini
 * AI-powered image classification
 * AI-assisted recommendations
 
-## Database
+### Database
 
 * Supabase
 * PostgreSQL
 
-## Development
+### Development and Deployment
 
 * Git
 * GitHub
 * VS Code
-
-## Deployment
-
-* Frontend: Vercel / static hosting
-* Backend: Render
+* Render
+* Vercel / Static Hosting
 
 ---
 
-# 📡 API Overview
+## 6. API Reference
 
 | Feature              | Method | Endpoint                   |
 | -------------------- | ------ | -------------------------- |
@@ -276,9 +281,21 @@ The map can visualize relevant waste-treatment and resource-recovery facilities,
 | Recovery Analysis    | POST   | `/api/v1/recovery/analyze` |
 | Recovery Records     | GET    | `/api/v1/recovery/records` |
 
+Interactive API documentation is available through FastAPI Swagger UI:
+
+```text
+/api/docs
+```
+
+or, depending on the deployment configuration:
+
+```text
+/docs
+```
+
 ---
 
-# 📁 Project Structure
+## 7. Repository Structure
 
 ```text
 ORBIT/
@@ -311,82 +328,77 @@ ORBIT/
 
 ---
 
-# ⚙️ Local Development
+## 8. Backend Setup
 
-## 1. Clone the repository
+### Clone the Repository
 
 ```bash
 git clone https://github.com/riddhi7890/orbit.git
 cd orbit
 ```
 
----
-
-## 2. Backend Setup
+### Navigate to Backend
 
 ```bash
 cd backend
 ```
 
-Create a virtual environment:
+### Create Virtual Environment
 
 ```bash
 python -m venv venv
 ```
 
-Activate it.
+### Activate Virtual Environment
 
-### macOS / Linux
+#### macOS / Linux
 
 ```bash
 source venv/bin/activate
 ```
 
-### Windows
+#### Windows
 
 ```powershell
 venv\Scripts\activate
 ```
 
-Install dependencies:
+### Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Create a `.env` file:
+### Configure Environment Variables
+
+Create a `.env` file inside the backend directory:
 
 ```env
 GEMINI_API_KEY=your_gemini_api_key
 GEMINI_MODEL=your_gemini_model
-
 SUPABASE_URL=your_supabase_url
 SUPABASE_KEY=your_supabase_key
 ```
 
-Run the backend:
+Do not commit `.env` to the repository.
+
+### Run Backend
 
 ```bash
 uvicorn app.main:app --reload
 ```
 
-Backend:
+The backend will be available at:
 
 ```text
 http://localhost:8000
 ```
 
-API documentation:
-
-```text
-http://localhost:8000/docs
-```
-
 ---
 
-# 💻 Frontend Setup
+## 9. Frontend Setup
 
-Open another terminal:
+Navigate to the frontend directory:
 
 ```bash
 cd frontend
@@ -398,25 +410,19 @@ Install dependencies:
 npm install
 ```
 
-Create:
-
-```text
-.env
-```
-
-Add:
+Create a frontend `.env` file:
 
 ```env
 VITE_API_BASE_URL=http://localhost:8000
 ```
 
-Start the frontend:
+Start the development server:
 
 ```bash
 npm run dev
 ```
 
-The application will be available at:
+The frontend will typically be available at:
 
 ```text
 http://localhost:5173
@@ -424,11 +430,11 @@ http://localhost:5173
 
 ---
 
-# 🔐 Environment Variables
+## 10. Environment Variables
 
-Never commit secrets to GitHub.
+Sensitive credentials should never be committed to GitHub.
 
-The following variables should remain in `.env` or your deployment platform's secret/environment-variable manager:
+### Backend
 
 ```text
 GEMINI_API_KEY
@@ -437,119 +443,128 @@ SUPABASE_URL
 SUPABASE_KEY
 ```
 
-`.env` is intentionally excluded through `.gitignore`.
+### Frontend
+
+```text
+VITE_API_BASE_URL
+```
+
+Environment files should be excluded using `.gitignore`.
 
 ---
 
-# 🌐 Deployment
+## 11. Deployment
 
-## Backend
+### Backend
 
-ORBIT's FastAPI backend can be deployed as a Web Service.
+The FastAPI backend can be deployed as a web service.
 
-Start command:
+Production start command:
 
 ```bash
 uvicorn app.main:app --host 0.0.0.0 --port $PORT
 ```
 
-Required environment variables should be configured through the deployment platform.
+Required environment variables must be configured through the deployment platform.
 
-## Frontend
+### Frontend
 
-The React/Vite frontend can be deployed as a static web application.
+The React/Vite application can be deployed as a static web application.
 
-Set:
+The production environment should contain:
 
 ```env
 VITE_API_BASE_URL=https://your-backend-url
 ```
 
-before building the production frontend.
+The frontend then communicates with the deployed FastAPI backend through the REST API layer.
 
 ---
 
-# 🔄 ORBIT Intelligence Pipeline
+## 12. Security Considerations
+
+ORBIT follows basic security practices for a prototype deployment:
+
+* API keys are stored through environment variables.
+* `.env` files are excluded from version control.
+* Frontend and backend communicate through defined REST APIs.
+* Backend configuration is separated from application logic.
+* Authentication and authorization can be extended as the platform moves toward production deployment.
+
+---
+
+## 13. Future Scope
+
+ORBIT can be further extended with:
+
+* Real-time IoT sensor integration.
+* Predictive bin overflow forecasting.
+* Advanced collection route optimization.
+* Real-time waste-treatment facility availability.
+* Contamination detection using computer vision.
+* Multilingual AI interaction.
+* RAG-powered waste-management knowledge assistant.
+* Automated facility routing.
+* Advanced city-level waste forecasting.
+* Multi-city deployment and centralized administration.
+
+---
+
+## 14. Project Impact
+
+ORBIT is designed to support a transition from conventional waste collection toward intelligent resource management.
+
+### Environmental
+
+* Improved waste segregation.
+* Increased recyclable material recovery.
+* Reduced unnecessary landfill dependency.
+* Better utilization of recoverable resources.
+
+### Operational
+
+* Data-driven collection prioritization.
+* Improved visibility into waste conditions.
+* Faster identification of critical situations.
+* Centralized waste-management intelligence.
+
+### Resource Efficiency
+
+* Identification of recoverable materials.
+* Better connection between waste generation and treatment.
+* Improved utilization of recyclable resources.
+
+---
+
+## 15. Project Vision
+
+ORBIT aims to transform waste from a disposal problem into a measurable and recoverable resource.
+
+The long-term vision is to create an intelligent waste-management ecosystem where:
 
 ```text
-              USER / CITY DATA
-                     │
-                     ▼
-            ┌─────────────────┐
-            │ Data Collection │
-            └────────┬────────┘
-                     │
-          ┌──────────┴──────────┐
-          ▼                     ▼
-    Waste Images            Sensor Data
-          │                     │
-          ▼                     ▼
-   Gemini Classification   Fill-Level Data
-          │                     │
-          └──────────┬──────────┘
-                     ▼
-              ORBIT Intelligence
-                     │
-        ┌────────────┼────────────┐
-        ▼            ▼            ▼
-    Analytics    Collection    Recovery
-        │         Priority         │
-        └────────────┼────────────┘
-                     ▼
-             AI Recommendations
-                     │
-                     ▼
-             SMARTER DECISIONS
+Waste Data
+    ↓
+AI Intelligence
+    ↓
+Operational Decisions
+    ↓
+Resource Recovery
+    ↓
+Sustainable Cities
 ```
 
 ---
 
-# 🎯 Impact
-
-ORBIT aims to help cities move from **reactive waste collection** to **intelligent resource management**.
-
-### Environmental Impact
-
-* Better waste segregation
-* Reduced landfill dependency
-* Increased material recovery
-* Improved recycling efficiency
-
-### Operational Impact
-
-* Smarter collection prioritization
-* Reduced unnecessary collection trips
-* Data-driven decisions
-* Centralized waste intelligence
-
-### Economic Impact
-
-* Better recovery of valuable materials
-* Improved resource utilization
-* More efficient collection operations
-
----
-
-# 🔮 Future Scope
-
-ORBIT can be extended with:
-
-* Real IoT ultrasonic sensors
-* Predictive overflow forecasting
-* Route optimization
-* Multi-city deployment
-* Multilingual AI assistant
-* Advanced RAG-powered civic knowledge assistant
-* Computer vision based contamination detection
-* Automated facility routing
-* Advanced waste recovery marketplace
-
----
-
-# 👥 Team
-
-Built with ❤️ for smarter and more sustainable cities.
+## 16. Team
 
 **ORBIT — Optimal Resource and Bin Intelligence System**
 
-> **See the waste. Understand the data. Recover the resources.**
+Developed as an AI-powered smart waste management solution for sustainable and intelligent urban resource management.
+
+---
+
+## License
+
+This project is developed as a prototype for educational, research, and hackathon purposes.
+
